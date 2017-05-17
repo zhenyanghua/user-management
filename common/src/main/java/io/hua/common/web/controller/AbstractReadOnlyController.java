@@ -52,7 +52,7 @@ public abstract class AbstractReadOnlyController<T extends IEntity> {
         return Lists.newArrayList(resultPage.getContent());
     }
 
-    protected final List<T> findPaginatedInternal(final int page, final int size) {
+    protected final List<T> findAllPaginatedInternal(final int page, final int size) {
         final List<T> resultPage = getService().findAllPaginated(page, size);
         return resultPage;
     }

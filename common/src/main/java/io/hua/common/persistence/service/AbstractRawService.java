@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -109,6 +110,8 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
     }
 
     protected abstract PagingAndSortingRepository<T, Long> getDao();
+
+    protected abstract JpaSpecificationExecutor<T> getSpecificationExecutor();
 
     protected final Sort constructSort(final String sortBy, final String sortOrder) {
         Sort sortInfo = null;
