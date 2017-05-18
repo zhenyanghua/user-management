@@ -1,12 +1,10 @@
 package io.hua.um.web.controller;
 
-import io.hua.common.persistence.service.IRawService;
 import io.hua.common.util.QueryConstants;
 import io.hua.common.web.controller.AbstractController;
 import io.hua.common.web.controller.ISortingController;
 import io.hua.um.persistence.model.Privilege;
 import io.hua.um.service.IPrivilegeService;
-import io.hua.um.service.IRoleService;
 import io.hua.um.util.UmMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
