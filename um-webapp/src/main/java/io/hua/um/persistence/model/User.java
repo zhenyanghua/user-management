@@ -63,7 +63,7 @@ public class User implements INameableEntity, INameableDto {
 
     @Override
     public Long getId() {
-        return null;
+        return id;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class User implements INameableEntity, INameableDto {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     public void setName(final String name) {
