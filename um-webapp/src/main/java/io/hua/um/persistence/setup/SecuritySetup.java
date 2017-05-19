@@ -27,7 +27,7 @@ import java.util.Set;
  * The main focus here is creating some standard privileges, then roles and finally some default principals/users
  */
 @Component
-@Profile(Profiles.PRODUCTION)
+//@Profile(Profiles.DEVELOPMENT)
 public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

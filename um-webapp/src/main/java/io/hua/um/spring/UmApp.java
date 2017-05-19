@@ -1,5 +1,6 @@
 package io.hua.um.spring;
 
+import io.hua.common.spring.util.Profiles;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -47,6 +48,8 @@ public class UmApp extends SpringBootServletInitializer {
     }
 
     public static void main(final String... args) {
-        SpringApplication.run(UmApp.class, args);
+        SpringApplication app = new SpringApplication(UmApp.class);
+//        app.setAdditionalProfiles(Profiles.DEVELOPMENT);
+        app.run(args);
     }
 }
