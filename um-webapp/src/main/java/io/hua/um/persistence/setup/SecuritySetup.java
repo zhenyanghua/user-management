@@ -27,7 +27,7 @@ import java.util.Set;
  * The main focus here is creating some standard privileges, then roles and finally some default principals/users
  */
 @Component
-//@Profile(Profiles.DEVELOPMENT)
+@Profile(Profiles.DEVELOPMENT)
 public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -76,6 +76,7 @@ public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent>
         final Privilege entityByName = privilegeService.findByName(name);
         if (entityByName == null) {
             final Privilege entity = new Privilege(name);
+            entity.setDescription("Test description.");
             privilegeService.create(entity);
         }
     }

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -22,9 +24,11 @@ public class Privilege implements INameableEntity, INameableDto {
     private Long id;
 
     @Column(unique = true, nullable = false)
+    @Size(min = 2, max = 30)
+    @NotNull
     private String name;
 
-    @Column(unique = false, nullable = true)
+    @Column(unique = false, nullable = false)
     private String description;
 
     @JsonIgnore
@@ -45,8 +49,8 @@ public class Privilege implements INameableEntity, INameableDto {
     }
 
     @Override
-    public void setId(Long id) {
-
+    public void setId(final Long id) {
+        this.id = id;
     }
 
     @Override

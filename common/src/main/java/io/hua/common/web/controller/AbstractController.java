@@ -19,9 +19,9 @@ public abstract class AbstractController<T extends IEntity> extends AbstractRead
     }
 
     protected final void updateInternal(final long id, final T resource) {
-        RestPreconditions.checkRequestElementNotNull(resource);
-        RestPreconditions.checkRequestElementNotNull(resource.getId());
-        RestPreconditions.checkRequestState(resource.getId() == id);
+        RestPreconditions.checkRequestElementNotNull(resource, resource.getClass().getSimpleName() + " resource is required");
+        RestPreconditions.checkRequestElementNotNull(resource.getId(), resource.getClass().getSimpleName() + " id is required");
+        RestPreconditions.checkIfBadRequest(resource.getId() == id, resource.getClass().getSimpleName() + " id and URI id don't match");
         RestPreconditions.checkNotNull(getService().findOne(resource.getId()));
 
         getService().update(resource);

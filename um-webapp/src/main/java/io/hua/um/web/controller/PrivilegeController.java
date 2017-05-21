@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -84,14 +85,14 @@ public class PrivilegeController extends AbstractController<Privilege> implement
     // create
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final Privilege resource) {
+    public void create(@RequestBody @Valid final Privilege resource) {
         createInternal(resource);
     }
 
     // update
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable("id") final Long id, @RequestBody final Privilege resource) {
+    public void update(@PathVariable("id") final Long id, @RequestBody @Valid final Privilege resource) {
         updateInternal(id, resource);
     }
 

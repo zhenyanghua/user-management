@@ -61,4 +61,20 @@ public final class RestPreconditions {
             throw new MyConflictException(message);
         }
     }
+
+    public static void checkIfBadRequest(final boolean expression) {
+        checkIfBadRequest(expression, null);
+    }
+
+    /**
+     * Ensures the truth of an expression related to the validity of the request
+     * @param expression a boolean expression
+     * @param message the message of the exception if the check fails
+     * @throws MyBadRequestException if ${@code expression} is false
+     */
+    public static void checkIfBadRequest(final boolean expression, final String message) {
+        if (!expression) {
+            throw new MyBadRequestException(message);
+        }
+    }
 }

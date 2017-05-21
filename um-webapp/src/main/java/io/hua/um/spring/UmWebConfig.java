@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Configuration
-@ComponentScan({"io.hua.um.web"})
+@ComponentScan({"io.hua.um.web", "io.hua.common.web"})
 @EnableWebMvc
 public class UmWebConfig extends WebMvcConfigurerAdapter {
 
@@ -31,4 +31,6 @@ public class UmWebConfig extends WebMvcConfigurerAdapter {
             converter.getObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         }
     }
+
+
 }

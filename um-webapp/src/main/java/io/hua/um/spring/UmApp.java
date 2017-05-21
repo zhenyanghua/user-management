@@ -1,6 +1,8 @@
 package io.hua.um.spring;
 
 import io.hua.common.spring.util.Profiles;
+import io.hua.um.persistence.setup.MyApplicationContextInitializer;
+import io.hua.um.util.Um;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -44,12 +46,13 @@ public class UmApp extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
-        return application.sources(UmApp.class);
+        return application.initializers(new MyApplicationContextInitializer())
+            .sources(UmApp.class);
     }
 
     public static void main(final String... args) {
         SpringApplication app = new SpringApplication(UmApp.class);
-//        app.setAdditionalProfiles(Profiles.DEVELOPMENT);
+        app.addInitializers(new MyApplicationContextInitializer());
         app.run(args);
     }
 }

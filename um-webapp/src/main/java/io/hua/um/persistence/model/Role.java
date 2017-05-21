@@ -63,7 +63,7 @@ public class Role implements INameableEntity, INameableDto{
 
     @Override
     public void setId(final Long id) {
-
+        this.id = id;
     }
 
     @Override
