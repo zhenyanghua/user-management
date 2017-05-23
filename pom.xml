@@ -101,6 +101,7 @@
 
         <!-- marshalling -->
         <jaxb-api.version>2.2.12</jaxb-api.version>
+        <woodstox.version>5.0.3</woodstox.version>
 
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>

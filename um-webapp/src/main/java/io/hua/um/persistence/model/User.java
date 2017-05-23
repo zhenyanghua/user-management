@@ -3,6 +3,7 @@ package io.hua.um.persistence.model;
 import io.hua.common.interfaces.INameableDto;
 import io.hua.common.persistence.model.INameableEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -24,10 +27,18 @@ public class User implements INameableEntity, INameableDto {
     private Long id;
 
     @Column(unique = true, nullable = false)
+    @Size(min = 2, max = 30)
+    @NotNull
     private String name;
 
     @Column(nullable = false)
+    @NotNull
     private String password;
+
+    @Column(unique = true, nullable = false)
+    @Email
+    @NotNull
+    private String email;
 
     @Column(nullable = true)
     private Boolean locked;
@@ -55,9 +66,10 @@ public class User implements INameableEntity, INameableDto {
         locked = false;
     }
 
-    public User(final String name, final String password, final Set<Role> roles) {
+    public User(final String name, final String password, final String email, final Set<Role> roles) {
         this.name = name;
         this.password = password;
+        this.email = email;
         this.roles = roles;
     }
 
@@ -102,6 +114,14 @@ public class User implements INameableEntity, INameableDto {
 
     public void setRoles(final Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(final String email) {
+        this.email = email;
     }
 
     @Override

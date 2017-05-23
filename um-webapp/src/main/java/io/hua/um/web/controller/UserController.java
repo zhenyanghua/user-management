@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -88,7 +89,7 @@ public class UserController extends AbstractController<User> implements ISorting
     // create
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final User resource) {
+    public void create(@RequestBody @Valid final User resource) {
         createInternal(resource);
     }
 

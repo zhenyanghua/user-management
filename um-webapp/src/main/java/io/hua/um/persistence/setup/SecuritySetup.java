@@ -104,6 +104,11 @@ public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent>
                 canRoleWrite,
                 canUserRead,
                 canUserWrite));
+
+        createRoleIfNotExisting(Roles.ROLE_ENDUSER,
+            Sets.newHashSet(
+                canUserRead
+            ));
     }
 
     private void createRoleIfNotExisting(final String name, final Set<Privilege> privileges) {
@@ -118,13 +123,13 @@ public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent>
     private void createUsers() {
         final Role roleAdmin = roleService.findByName(Roles.ROLE_ADMIN);
 
-        createUserIfNotExisting(Um.ADMIN_EMAIL, Um.ADMIN_PASS, Sets.newHashSet(roleAdmin));
+        createUserIfNotExisting(Um.ADMIN_USERNAME, Um.ADMIN_PASS, Um.ADMIN_EMAIL, Sets.newHashSet(roleAdmin));
     }
 
-    private void createUserIfNotExisting(final String loginName, final String pass, final Set<Role> roles) {
+    private void createUserIfNotExisting(final String loginName, final String pass, final String email, final Set<Role> roles) {
         final User entityByName = userService.findByName(loginName);
         if (entityByName == null) {
-            final User entity = new User(loginName, pass, roles);
+            final User entity = new User(loginName, pass, email, roles);
             userService.create(entity);
         }
     }
